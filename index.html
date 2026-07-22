@@ -62,5 +62,15 @@
     </footer>
 
     <script src="main.js"></script>
+    <script>
+    // 登录状态校验
+    window.onload = function(){
+        const loginState = localStorage.getItem('isLogin');
+        if(loginState !== 'true'){
+            //未登录，强制跳转登录页面
+            window.location.href = '登录页.html';
+            }
+    }
+    </script>
 </body>
 </html>
