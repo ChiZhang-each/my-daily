@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AboutEach</title>
+    <link rel="icon" type="image/png" href="logo.ico">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 页面内头像样式，不用改动style.css */
+        .avatar-img{
+            width:140px;
+            height:140px;
+            border-radius:5%; /* 圆形头像 */
+            object-fit:cover;
+            display:block;
+            margin:0 auto 20px;
+            border:1px solid #054a78;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header-box">
+        <div class="logo">Each的日常记录</div>
+        <nav class="nav-menu">
+            <a href="home.html">Home</a>
+            <a href="home.html#article">Note</a>
+            <a href="#" class="active">AboutMe</a>
+            <button id="modeBtn" class="mode-btn">🌙 深色模式</button>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <div class="publish-box">
+                <!-- 头像位置 -->
+                <img class="avatar-img" src="avatar.jpg" alt="头像">
+
+                <h2 style="text-align:center;">👤 Each</h2>
+                <hr style="margin:15px 0;border: 1px dashed #ddd;">
+                <p style="margin:12px 0;line-height:1.8;">
+                    欢迎来看我的无聊产物！
+                </p>
+                <p style="margin:12px 0;line-height:1.8;">
+                    I solemnly swear that I am up to no good!
+                </p>
+                <p style="margin:12px 0;line-height:1.8;">
+                    广告位招租……（bushi
+                </p>
+
+                <div style="margin-top:30px;">
+                    <a href="home.html">
+                        <button class="submit-btn">← 返回我的日常主页</button>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="side-box">
+                <h3>导航跳转</h3>
+                <li onclick="location.href='home.html'">📖 全部动态</li>
+            </div>
+            <div class="side-box">
+                <h3>站点说明</h3>
+                <p style="font-size:14px;color:#666;">
+                    所有内容保存在本地浏览器，清理缓存会丢失记录。
+                </p>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="footer-box">
+        Each的日常记录 © 2026
+    </footer>
+
+    <!-- 深色模式JS -->
+    <script>
+        const modeBtn = document.getElementById('modeBtn');
+        const body = document.body;
+
+        if(localStorage.getItem('darkMode') === 'true'){
+            body.classList.add('dark');
+            modeBtn.innerHTML = '☀️ 浅色模式';
+        }
+
+        modeBtn.onclick = function(){
+            body.classList.toggle('dark');
+            if(body.classList.contains('dark')){
+                modeBtn.innerHTML = '☀️ 浅色模式';
+                localStorage.setItem('darkMode','true');
+            }else{
+                modeBtn.innerHTML = '🌙 深色模式';
+                localStorage.setItem('darkMode','false');
+            }
+        }
+    </script>
+</body>
+</html>

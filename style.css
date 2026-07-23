@@ -30,10 +30,9 @@ body.dark input, body.dark textarea {
     border-color: #555;
 }
 
-/* 导航栏 */
+/* 导航栏（已经改成顶部固定居中版） */
 .header-box {
     width: 1200px;
-    margin: 0 auto;
     background: #2c3e50;
     color: white;
     display: flex;
@@ -41,6 +40,13 @@ body.dark input, body.dark textarea {
     align-items: center;
     padding: 18px 30px;
     border-radius: 0 0 8px 8px;
+
+    /* 固定悬浮核心配置 */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
 }
 body.dark .header-box {
     background: #111822;
@@ -68,10 +74,10 @@ body.dark .header-box {
     color: white;
 }
 
-/* 主体容器 */
+/* 主体容器 增加顶部间距，不会被导航栏挡住 */
 .container {
     width: 1200px;
-    margin: 30px auto;
+    margin: 100px auto 30px;
     display: flex;
     gap: 25px;
 }
@@ -246,7 +252,7 @@ body.dark .comment-item {
     border-top: 1px solid #ddd;
 }
 
-/* 手机自适应 */
+/* 手机自适应（同步适配固定导航） */
 @media (max-width: 1220px) {
     .header-box,.container,.footer-box {
         width: 96%;
@@ -255,6 +261,7 @@ body.dark .comment-item {
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
+        margin-top: 110px;
     }
     .main-content, .sidebar {
         width: 100%;
@@ -262,4 +269,56 @@ body.dark .comment-item {
     .nav-menu {
         gap:10px;
     }
+}
+
+
+/* ==========友链样式 修复文字重叠 ========== */
+.friend-link-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.friend-item {
+    padding:12px 0;
+    border-bottom:1px dashed #eee;
+    display: flex;
+    gap: 10px; /* 圆点 和 文字块 中间固定空隙！ */
+}
+body.dark .friend-item{
+    border-color:#444;
+}
+/* 圆点 */
+.friend-item::before{
+    content: "●";
+    color:#3498db;
+    font-size:12px;
+    /* 圆点垂直居中对齐第一行文字 */
+    margin-top: 4px;
+    flex-shrink: 0; /* 圆点永远不缩小 */
+}
+body.dark .friend-item::before{
+    color:#60b8f0;
+}
+/* 文字全部装在这个盒子里 */
+.friend-text-wrap{
+    flex: 1;
+}
+.friend-title{
+    font-weight:bold;
+    margin-bottom:4px;
+}
+.friend-item a {
+    color:#3498db;
+    text-decoration:none;
+}
+.friend-item a:hover{
+    text-decoration: underline;
+}
+.friend-desc{
+    font-size:14px;
+    color:#777;
+    margin-top:4px;
+}
+body.dark .friend-desc{
+    color:#aaa;
 }
